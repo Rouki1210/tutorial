@@ -1,0 +1,11 @@
+footer{
+    display: flex;
+}
+
+.btn-continue{
+    background-color: #343A40;
+}
+
+.btn-cart{
+    background-color: #DC3545;
+}

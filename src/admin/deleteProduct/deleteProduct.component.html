@@ -1,0 +1,16 @@
+<app-modal [titleModal]="'Delete Product'" [open]="true" (onClose)="handleClose()">
+  <div body>
+    <div class="text">
+      Are you sure you want to delete there product?
+    </div>
+    <div class="notification">
+      This action cannot be undone
+    </div>
+  </div>
+  <div footer>
+    <div class="button-container">
+      <button class="btn cancel-btn" (click)="handleClose()">Cancel</button>
+      <button class="btn delete-btn" (click)="deleteProduct(product)">Delete</button>
+  </div>
+  </div>
+</app-modal>

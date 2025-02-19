@@ -1,0 +1,38 @@
+.pagination{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination ul {
+    list-style: none;
+}
+
+.pagination ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.pagination ul li span:hover {
+    background: #FD7E14;
+    color: #fff;
+    border: 1px solid #FFA84E;
+}
+
+span:link {
+    text-decoration: none;
+}
+
+
+.pagination ul li span {
+    float: left;
+    background-color: #F5F5F5;
+    color: #495057;
+    padding-top: 5px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}

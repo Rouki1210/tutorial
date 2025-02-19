@@ -1,0 +1,33 @@
+<main>
+    <div class="container bg-transparent my-4 p-3">
+    <!-- Sort by Section -->
+        <div class="d-flex justify-content-end align-items-center mb-3">
+            <label for="sortSelect" class="me-2 fw-semibold">Sort by:</label>
+            <select id="sortSelect" class="form-select form-select-sm w-auto" (change)="onSortChange($event)">
+                <option value="a-z">A-Z</option>
+                <option value="z-a">Z-A</option>
+                <option value="price-asc">Price (Low to High)</option>
+                <option value="price-desc">Price (High to Low)</option>
+            </select>
+        </div>
+        
+    <!-- Product Grid -->
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col" *ngFor="let product of products">
+                <div class="card h-100 shadow-sm">
+                    <img [src]="product.imageProduct" class="card-img-top" alt="{{ product.name }}" loading="lazy">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.productName }}</h5>
+                        <div class="d-flex justify-content-between align-items-center my-3">
+                        <span class="float-start price-hp">{{ product.price }}&dollar;</span>
+                        <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span>
+                    </div>
+                    <div class="text-center my-4"> <a href="#" class="btn btn-warning" (click)="addtoCart(product)" >Add to cart</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Pagination -->
+        <app-pagination [currentPage]="currentPage" [limit]="limit" [total]="products.length" (changePage)="updateDisplayedProducts()"></app-pagination>
+    </div>
+</main>

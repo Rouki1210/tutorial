@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Header</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">ConsoleKingdom</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Centered Navbar Links -->
+        <ul class="navbar-center navbar-nav mx-auto d-none d-md-flex">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" id="navbarDropdown">
+              Collection
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Link 1</a></li>
+              <li><a class="dropdown-item" href="#">Link 2</a></li>
+              <li><a class="dropdown-item" href="#">Link 3</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Contact</a>
+          </li>
+        </ul>
+      
+        <!-- Right Aligned Section -->
+        <div class="d-flex align-items-center">
+          <!-- Search Bar -->
+          <form class="d-flex search-bar me-3" [ngClass]="{ 'active': isActive }">
+            <input name="searchInput" class="form-control me-2" type="text" ng-app="search-input" placeholder="Search products..." aria-label="Search" [(ngModel)]="searchText" (change)="handleInputChange($event)">
+            <button class="btn btn-outline-light form-control-btn" type="button" (click)="toggleActive(!isActive)" >
+              <img src="https://img.icons8.com/ios-filled/20/ffffff/search--v1.png" alt="Search">
+            </button>
+
+            <!-- <ul>
+              <li *ngFor="let name of filterProduct()">{{name }}</li>
+            </ul> -->
+          </form>
+          <!-- Right Menu -->
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <button type="button" class="login-btn" (click)="openLoginModal = true">Login</button>
+            </li>
+            <li class="nav-item" >
+              <div data-tooltip="20$" class="button">
+                <div class="button-wrapper" (click)="openCartModal = true">
+                  <div class="text">Buy Now</div>
+                    <span class="icon">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                    </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <!-- Modal -->
+          <app-login *ngIf="openLoginModal" (onClose)="closeLoginForm()"></app-login>
+          <app-cart *ngIf="openCartModal" (onClose)="openCartModal = false"></app-cart>
+        </div>
+      </div>
+      
+    </div>
+  </nav>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

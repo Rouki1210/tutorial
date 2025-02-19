@@ -1,0 +1,36 @@
+.icon{
+    margin: 0 5px 0 5px;
+    cursor: pointer;
+}
+
+.btn{
+    margin-left: 10px;
+}
+
+.btn-continue{
+    background-color: #6C757D; /* Gray */
+    color: #FFFFFF; /* White text */
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-continue:hover{
+    background-color: #5A6268;
+}
+
+.btn-cart{
+    background-color: #28A745; /* Green */
+    color: #FFFFFF; /* White text */
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cart:hover{
+    background-color: #218838;
+}

@@ -1,0 +1,20 @@
+
+  <app-modal [titleModal]="'Login'" (onClose)="handleClose()" [open]="true">
+    <div body>
+      <form action="">
+        <div class="form-control">
+            <input type="text">
+            <label >Email</label>
+        </div>
+        <div class="form-control">
+            <input type="password">
+            <label >Password</label>
+        </div>
+      </form>
+    </div>
+    <div footer>
+              <button class="btn" (click)="loginOK()">Login</button>
+              <p class="text">Don't have an account? <a href="">Register</a> </p>
+    </div>
+  </app-modal>
+

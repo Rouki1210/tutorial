@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <div class="button-container">
+    <button class="primary-btn" (click)="addProduct()">Add a new product</button>
+    <button class="secondary-btn">View as a customer</button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="table_item" (click)="sortProductIdAsc()" (dblclick)="sortProductIdDesc()">Product Id</th>
+        <th (click)="method1CallForClick()" (dblclick)="method2CallForDblClick()">Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Product Image</th> 
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let product of products">
+      <tr>
+        <td>{{product.id}}</td>
+        <td>{{product.productName}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.price}}</td>
+        <td><img [src]="product.imageProduct" class="card-img-top" alt="{{ product.name }}" loading="lazy"></td>
+        <td>
+          <i class="fa-regular fa-pen-to-square icon icon-edit" (click)="updateProduct(product)"></i>
+          <i class="fa-solid fa-trash icon icon-delete" (click)="deleteProduct(product.id)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-deleteProduct *ngIf="openDeleteModal" (onClose)="openDeleteModal = false" [product]="currentProduct"></app-deleteProduct>
+  <app-editProduct *ngIf="openEditModal" (onClose)="openEditModal = false" [product]="editProduct"></app-editProduct>
+  <app-addProduct *ngIf="openAddModal" (onClose)="openAddModal = false"></app-addProduct>
+</div>

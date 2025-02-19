@@ -1,0 +1,31 @@
+<app-modal [titleModal]="'Update Product'" [open]="true" (onClose)="handleClose()">
+  <div body>
+    <form [formGroup]="productForm">
+      <div class="form-group">
+        <label for="product-id">Product ID</label>
+        <input type="text" id="product-id" placeholder="{{product.id}}" disabled>
+    </div>
+    <div class="form-group">
+        <label for="product-name">Product Name</label>
+        <input type="text" id="product-name" value="{{product.productName}}" formControlName="productName" required>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" value="{{product.quantity}}" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price" value="{{product.price}}" required>
+    </div>
+    <div class="form-group">
+      <label for="product-image-url">Product Image URL</label>
+      <input type="text" id="product-image-url" oninput="updateImagePreview()" value="{{product.imageProduct}}">
+      <img id="image-preview" src="" alt="Preview" style="display: none;">
+    </div>
+    </form>
+  </div>
+  <div footer>
+    <button type="submit" class="submit-btn" (click)="updateProduct()">Save Changes</button>
+    <button type="button" class="cancel-btn" (click)="handleClose()">Cancel</button>
+  </div>
+</app-modal>

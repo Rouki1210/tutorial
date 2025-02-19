@@ -1,0 +1,17 @@
+<nav class="pagination">
+  <ul>
+    <li>
+        <span href="#" class="prev"> 
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </span>
+    </li>
+    <li *ngFor="let page of pages" [ngClass]="{'page-item': true, active: currentPage === page}" (click)="changeNumPage(page)">
+      <span class="">{{page}}</span>
+    </li>
+    <li>
+      <span href="#" class="next">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </span>
+    </li>
+</ul>
+</nav>

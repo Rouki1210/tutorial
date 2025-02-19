@@ -1,0 +1,40 @@
+<app-modal [titleModal]="'Shopping Cart'" [open]="true" (onClose)="handleClose()">
+  <div body>
+    <form action="">
+      <div *ngIf="products.length === 0" class="empty-cart text-center">
+        <h3>Your cart is empty</h3>
+        <p>Add products to your cart to view them here.</p>
+      </div>
+
+      <div *ngFor="let product of products" class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+        <div class="mr-1">
+          <img class="rounded" [src]="product.imageProduct" width="70">
+        </div>
+        <div class="d-flex flex-column product-details">
+          <h5>{{ product.name }}</h5>
+          <div class="d-flex flex-row product-desc">
+            <div class="color">
+              <span class="text-grey">Color:</span>
+              <span class="font-weight-bold">&nbsp;{{ product.color }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-row align-items-center qty">
+          <i class="fa fa-minus text-danger icon" (click)="decreaseProduct(product.id)"></i>
+          <h5 class="text-grey mt-1 mr-1 ml-1">{{ count }}</h5>
+          <i class="fa fa-plus text-success icon" (click)="increaseProduct(product.id)"></i>
+        </div>
+        <div>
+          <h5 class="text-grey">{{ product.price * count }}$</h5>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="fa fa-trash mb-1 text-danger" (click)="deleteProduct(product.id)"></i>
+        </div>
+      </div>
+    </form>
+</div>
+<div footer>
+    <button class="btn btn-continue">Continue shopping</button>
+    <button class="btn btn-cart">Add to cart</button>
+  </div>
+</app-modal>
