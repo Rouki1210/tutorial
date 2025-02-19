@@ -16,10 +16,6 @@ export class EditProductComponent implements OnInit {
     
   productForm : FormGroup = new FormGroup({
     id: new FormControl(this.product.id),
-    productName: new FormControl('', ValueChangeEvent.bind),
-    quantity: new FormControl(0, Validators.required),
-    price: new FormControl(0, Validators.required),
-    imageProduct: new FormControl('', Validators.required)
   })
       constructor() { }
       

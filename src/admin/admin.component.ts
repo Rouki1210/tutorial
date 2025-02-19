@@ -87,11 +87,15 @@ method2CallForDblClick(){
   deleteProduct(productId : any){
     this.openDeleteModal = true
     this.currentProduct = productId
-    console.log(productId)
+
   }
 
   addProduct(){
     this.openAddModal = true
   }
 
+  closeAddModal(){
+    this.openAddModal = false,
+    this.fetchData()
+  }
 }

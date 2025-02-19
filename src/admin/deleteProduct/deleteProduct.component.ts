@@ -23,7 +23,7 @@ export class DeleteProductComponent implements OnInit {
       fetch(`http://localhost:5187/api/Product/${product}`, {
         method: 'DELETE',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         }
       })
       .then(res => {

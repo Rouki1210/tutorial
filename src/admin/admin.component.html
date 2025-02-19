@@ -31,5 +31,5 @@
   </table>
   <app-deleteProduct *ngIf="openDeleteModal" (onClose)="openDeleteModal = false" [product]="currentProduct"></app-deleteProduct>
   <app-editProduct *ngIf="openEditModal" (onClose)="openEditModal = false" [product]="editProduct"></app-editProduct>
-  <app-addProduct *ngIf="openAddModal" (onClose)="openAddModal = false"></app-addProduct>
+  <app-addProduct *ngIf="openAddModal" (onClose)="closeAddModal()" ></app-addProduct>
 </div>

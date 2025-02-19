@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ModalComponent } from '../../app/components/modal/modal.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { from } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addProduct',
@@ -22,11 +22,8 @@ export class AddProductComponent implements OnInit {
     imageProduct: new FormControl('', Validators.required)
   })
   
-  constructor() {
+  constructor(private toastr: ToastrService) { }
 
-  }
-    
-  
   ngOnInit() {
       
   }
@@ -58,6 +55,7 @@ export class AddProductComponent implements OnInit {
       })
       .then(data => {
         console.log('Add a new product successful:', data);
+        this.toastr.success('Added successful', '')
       })
       .catch(err => {
         console.error('Error adding data:', err);

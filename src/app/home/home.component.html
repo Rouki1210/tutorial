@@ -21,13 +21,14 @@
                         <div class="d-flex justify-content-between align-items-center my-3">
                         <span class="float-start price-hp">{{ product.price }}&dollar;</span>
                         <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span>
+                        <div *ngIf="product.quantity == 0" class="label-top shadow-sm">Sold out</div>
                     </div>
                     <div class="text-center my-4"> <a href="#" class="btn btn-warning" (click)="addtoCart(product)" >Add to cart</a></div>
                     </div>
                 </div>
             </div>
         </div>
-    <!-- Pagination -->
+        <!-- Pagination -->
         <app-pagination [currentPage]="currentPage" [limit]="limit" [total]="products.length" (changePage)="updateDisplayedProducts()"></app-pagination>
     </div>
 </main>
