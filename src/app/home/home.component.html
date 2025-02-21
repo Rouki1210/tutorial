@@ -14,7 +14,7 @@
     <!-- Product Grid -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
             <div class="col" *ngFor="let product of products">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm" *ngIf="product.quantity > 0">
                     <img [src]="product.imageProduct" class="card-img-top" alt="{{ product.name }}" loading="lazy">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.productName }}</h5>
@@ -23,7 +23,21 @@
                         <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span>
                         <div *ngIf="product.quantity == 0" class="label-top shadow-sm">Sold out</div>
                     </div>
-                    <div class="text-center my-4"> <a href="#" class="btn btn-warning" (click)="addtoCart(product)" >Add to cart</a></div>
+                    <div class="text-center my-4"> <a class="btn btn-warning" (click)="addtoCart(product)" >Add to cart</a></div>
+                    </div>
+                </div>
+                <div class="card h-100 shadow-sm" *ngIf="product.quantity == 0">
+                    <img [src]="product.imageProduct" class="card-img-top product-image" alt="Product Name" loading="lazy">
+                    <div class="card-body">
+                        <h5 class="card-title">Playstation 5</h5>
+                        <div class="d-flex justify-content-between align-items-center my-3">
+                            <span class="float-start price-hp">$1799&dollar;</span>
+                            <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span>
+                            <div class="sold-out">SOLD OUT</div>
+                        </div>
+                        <div class="text-center my-4"> 
+                            <button class="add-to-cart" disabled>Out of Stock</button>
+                        </div>
                     </div>
                 </div>
             </div>

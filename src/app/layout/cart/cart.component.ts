@@ -10,12 +10,26 @@ import { CommonModule } from '@angular/common';
 })
 export class CartComponent implements OnInit {
   @Output() onClose = new EventEmitter();
-  @Input() products : any[] = []
   count = 1;
+
+  cartProduct: any[] = []
 
   constructor() { }
 
   ngOnInit() {
+    this.loadCart()
+    console.log(this.cartProduct)
+  }
+
+  loadCart() {
+    let cartData = localStorage.getItem('cartProduct');
+    
+    try {
+      this.cartProduct = cartData ? JSON.parse(cartData) : [];
+    } catch (error) {
+      console.error("Error parsing cart data:", error);
+      this.cartProduct = []; // Reset if data is corrupted
+    }
   }
 
   handleClose() {
@@ -34,6 +48,9 @@ export class CartComponent implements OnInit {
   }
 
   deleteProduct(productId : number){
-    this.products = this.products.filter(product => product.id !== productId)
+    this.cartProduct = this.cartProduct.filter(product => product.id !== productId);
+    localStorage.setItem('cartProduct', JSON.stringify(this.cartProduct));
+
+  console.log('Updated cart after removal:', this.cartProduct);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Products } from './db_data';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { PaginationComponent } from '../layout/pagination/pagination.component';
 import { HttpClient } from '@angular/common/http';
 import { EventSubscribe } from '../event-hub';
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit{
   }
 
   products : any[] = []
-  cartProduct = []
+  cartProduct : any = []
   searchText : string = ''
   searchProduct : any[] = []
 
@@ -134,10 +134,11 @@ export class HomeComponent implements OnInit{
 
   addtoCart(product : any){
     if (!this.cartProduct) {
-      this.cartProduct = []; // Initialize cart if it doesn't exist
+      this.cartProduct = JSON.parse(localStorage.getItem('cartProduct') || '[]');
     }
   
-    product = this.cartProduct// Add the selected product to the cart
+    this.cartProduct.push(product);
+    localStorage.setItem('cartProduct', JSON.stringify(this.cartProduct))
     console.log('Product added to cart:', product);
     console.log('Current cart:', this.cartProduct);
   }

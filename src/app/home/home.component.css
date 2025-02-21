@@ -56,39 +56,6 @@ h2 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06)
 }
 
-.label-top {
-    position: absolute;
-    background-color: #8bc34a;
-    color: #fff;
-    top: 8px;
-    right: 8px;
-    padding: 5px 10px 5px 10px;
-    font-size: .7rem;
-    font-weight: 600;
-    border-radius: 3px;
-    text-transform: uppercase
-}
-
-.top-right {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    font-size: 1rem;
-    font-weight: 900;
-    background: #ff5722;
-    line-height: 90px;
-    text-align: center;
-    color: white
-}
-
-.top-right span {
-    display: inline-block;
-    vertical-align: middle
-}
-
 @media (max-width: 768px) {
     .card-img-top {
         max-height: 250px
@@ -231,3 +198,25 @@ footer {
     color: #fff
 }
 
+.add-to-cart{
+    width: 100%;
+    padding: 10px;
+    background: gray;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: not-allowed;
+    margin-top: 10px;
+}
+
+.sold-out {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}

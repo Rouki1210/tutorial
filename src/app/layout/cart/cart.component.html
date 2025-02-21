@@ -1,17 +1,17 @@
 <app-modal [titleModal]="'Shopping Cart'" [open]="true" (onClose)="handleClose()">
   <div body>
     <form action="">
-      <div *ngIf="products.length === 0" class="empty-cart text-center">
+      <div *ngIf="cartProduct.length === 0" class="empty-cart text-center">
         <h3>Your cart is empty</h3>
         <p>Add products to your cart to view them here.</p>
       </div>
 
-      <div *ngFor="let product of products" class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
+      <div *ngFor="let product of cartProduct" class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
         <div class="mr-1">
           <img class="rounded" [src]="product.imageProduct" width="70">
         </div>
         <div class="d-flex flex-column product-details">
-          <h5>{{ product.name }}</h5>
+          <h5>{{ product.productName }}</h5>
           <div class="d-flex flex-row product-desc">
             <div class="color">
               <span class="text-grey">Color:</span>
