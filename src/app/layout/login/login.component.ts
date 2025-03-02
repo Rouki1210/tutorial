@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalComponent } from '../../components/modal/modal.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [ModalComponent],
+  imports: [ModalComponent, FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -16,8 +17,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  openSearch(){
-    
+  loginObj: any = {
+    "UserName": "",
+    "Password": "",
   }
   
   handleClose() {
@@ -26,6 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   loginOK(){
-    alert("Login Successful")
+    console.log(this.loginObj)
   }
 }

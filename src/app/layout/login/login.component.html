@@ -2,19 +2,23 @@
   <app-modal [titleModal]="'Login'" (onClose)="handleClose()" [open]="true">
     <div body>
       <form action="">
-        <div class="form-control">
-            <input type="text">
-            <label >Email</label>
+        <div class="input-group">
+          <input type="text" name="Username" placeholder="Username" [(ngModel)] = "loginObj.Username" required>
         </div>
-        <div class="form-control">
-            <input type="password">
-            <label >Password</label>
+        <div class="input-group">
+          <input type="password" name="Password" placeholder="Password" [(ngModel)] = "loginObj.Password" required>
         </div>
       </form>
     </div>
     <div footer>
-              <button class="btn" (click)="loginOK()">Login</button>
-              <p class="text">Don't have an account? <a href="">Register</a> </p>
+      <div class="button-group">
+        <button type="submit" class="login-btn" (click)="loginOK()">Login</button>    
+
+        <button type="submit" class="register-btn" (click)="loginOK()">Register</button>
+      </div>
+      
     </div>
   </app-modal>
+
+  <!-- <app-modal [titleModal]="'Register'" (onClose)="handleClose()" [open]="true"></app-modal> -->
 

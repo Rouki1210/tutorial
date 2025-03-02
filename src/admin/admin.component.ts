@@ -81,6 +81,7 @@ method2CallForDblClick(){
 
   updateProduct(product : any){
     this.openEditModal = true
+    console.log(product)
     this.editProduct = product
   }
   

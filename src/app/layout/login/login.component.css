@@ -1,11 +1,50 @@
-footer{
+.input-group {
+    margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
 }
 
-.btn-continue{
-    background-color: #343A40;
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
 }
 
-.btn-cart{
-    background-color: #DC3545;
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.login-btn,
+.register-btn {
+    background: white;
+    color: black;
+    padding: 12px 24px;
+    border: 2px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: auto;
+}
+
+.login-btn {
+    border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.register-btn {
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+    background: black;
+    color: white;
 }

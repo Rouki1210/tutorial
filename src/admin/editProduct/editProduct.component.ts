@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ModalComponent } from '../../app/components/modal/modal.component';
-import { FormControl, FormGroup, ReactiveFormsModule, ValueChangeEvent } from '@angular/forms';
+import { FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editProduct',
@@ -12,57 +12,48 @@ import { FormControl, FormGroup, ReactiveFormsModule, ValueChangeEvent } from '@
 export class EditProductComponent implements OnInit {
 
   @Output() onClose = new EventEmitter();
-  @Input() product : any = [];
-    
-  productForm : FormGroup = new FormGroup({
-    id: new FormControl(this.product.id),
-  })
-      constructor() { }
-      
-    
-      ngOnInit() {
-        
-      }
+  @Input() product: any;
+  productForm!: FormGroup;
 
+  constructor() {}
 
-      updateData(){
-        fetch(`http://localhost:5187/api/Product`, {
+  ngOnInit() {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.productForm = new FormGroup({
+      id: new FormControl({ value: this.product?.id, disabled: true }),
+      productName: new FormControl(this.product?.productName, Validators.required),
+      quantity: new FormControl(this.product?.quantity, Validators.required),
+      price: new FormControl(this.product?.price, Validators.required),
+      imageProduct: new FormControl(this.product?.imageProduct, Validators.required)
+    });
+  }
+
+async updateProduct() {
+    if (this.productForm.valid) {
+      const updatedProduct = { ...this.product, ...this.productForm.getRawValue() };
+      try {
+        const response = await fetch('http://localhost:5187/api/Product', {
           method: 'PUT',
           headers: {
-            "Accept": "text/plain",
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(this.product)
-        })
-        .then(res => {
-          if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
-          }
-          return res.json(); // Assuming the API returns a response body
-        })
-        .then(data => {
-          console.log('Update successful:', data);
-        })
-        .catch(err => {
-          console.error('Error updating data:', err);
+          body: JSON.stringify(updatedProduct)
         });
-      }
 
-      updateProduct(){
-        console.log(this.product)
-        this.updateData()
-        this.onClose.emit()
-      }
-      
-      updateImagePreview() {
-        const imagePreview = document.getElementById('image-preview') as HTMLImageElement;
-        if (imagePreview) {
-          imagePreview.style.display = this.product.productImageUrl ? 'block' : 'none';
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-      }
-      
-      handleClose() {
         this.onClose.emit();
+      } catch (error) {
+        console.error('Error updating data:', error);
       }
+    }
+  }
 
+  handleClose() {
+    this.onClose.emit();
+  }
 }

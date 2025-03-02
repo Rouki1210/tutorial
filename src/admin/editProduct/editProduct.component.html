@@ -3,7 +3,7 @@
     <form [formGroup]="productForm">
       <div class="form-group">
         <label for="product-id">Product ID</label>
-        <input type="text" id="product-id" placeholder="{{product.id}}" disabled>
+        <input type="text" id="product-id" value="{{product.id}}" disabled>
     </div>
     <div class="form-group">
         <label for="product-name">Product Name</label>
@@ -11,16 +11,15 @@
     </div>
     <div class="form-group">
         <label for="quantity">Quantity</label>
-        <input type="number" id="quantity" value="{{product.quantity}}" required>
+        <input type="number" id="quantity" value="{{product.quantity}}" formControlName="quantity" required>
     </div>
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" id="price" value="{{product.price}}" required>
+        <input type="number" id="price" value="{{product.price}}" formControlName="price" required>
     </div>
     <div class="form-group">
       <label for="product-image-url">Product Image URL</label>
-      <input type="text" id="product-image-url" oninput="updateImagePreview()" value="{{product.imageProduct}}">
-      <img id="image-preview" src="" alt="Preview" style="display: none;">
+      <input type="text" id="product-image-url" value="{{product.imageProduct}}" formControlName="imageProduct">
     </div>
     </form>
   </div>
