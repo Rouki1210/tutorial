@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit{
   searchProduct : any[] = []
 
   fetchData(){
-    fetch('http://localhost:5187/api/Product', {
+    fetch('http://localhost:5187/api/Product/page/1', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

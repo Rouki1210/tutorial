@@ -1,0 +1,12 @@
+.container{
+    padding: 80px;
+}
+
+.product-list{
+    margin-left: 10px;
+}
+
+.custom-select{
+    height: 38px;
+    border-radius: 5px;
+}

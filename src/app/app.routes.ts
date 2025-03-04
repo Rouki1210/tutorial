@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { AdminComponent } from '../admin/admin.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 export const routes: Routes = [
     {
@@ -14,4 +15,9 @@ export const routes: Routes = [
         title: 'Admin',
         component: AdminComponent,
     },
+    {
+        path: 'checkout',
+        title: 'Cashout',
+        component: CheckoutComponent,
+    }
 ];

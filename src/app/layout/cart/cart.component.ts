@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalComponent } from "../../components/modal/modal.component";
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+import { CheckoutComponent } from '../../checkout/checkout.component';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +16,7 @@ export class CartComponent implements OnInit {
 
   cartProduct: any[] = []
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.loadCart()
@@ -30,6 +32,11 @@ export class CartComponent implements OnInit {
       console.error("Error parsing cart data:", error);
       this.cartProduct = []; // Reset if data is corrupted
     }
+  }
+
+  addToCart(){
+    this.router.navigate(['/checkout']);
+    this.onClose.emit()
   }
 
   handleClose() {
