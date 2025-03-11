@@ -3,29 +3,48 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DeleteProductComponent } from './deleteProduct/deleteProduct.component';
 import { EditProductComponent } from './editProduct/editProduct.component';
 import { AddProductComponent } from './addProduct/addProduct.component'
+import { HttpClient } from '@angular/common/http';
+import { AddOrderComponent } from './addOrder/addOrder.component';
+import { DeleteOrderComponent } from './deleteOrder/deleteOrder.component';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  imports: [CommonModule, DeleteProductComponent, EditProductComponent, AddProductComponent],
+  imports: [CommonModule, DeleteProductComponent, EditProductComponent, AddProductComponent, AddOrderComponent, DeleteOrderComponent],
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
   
-  constructor() { }
+  constructor(private http : HttpClient) { }
   
   ngOnInit() {
     this.fetchData()
+    this.loadOrder()
   }
   
   isSingleClick: Boolean = true;     
   openDeleteModal = false;
   openEditModal = false;
   openAddModal = false;
+  openAddOrderModal = false;
   currentProduct : number = 0;
   editProduct : any = []
+  orders : any[] = []
 
   products : any[] = []
+
+  loadOrder(){
+    this.http.get<any>('https://localhost:7086/api/Order').subscribe(
+      (response) => {
+        console.log("API Response:", response);  // Debugging
+      this.orders = response;  // Adjust based on actual API response
+      console.log("Orders:", this.orders);
+      },      
+      (error) => {
+        console.error("Error loading country data:", error);
+      }
+    )
+  }
 
   fetchData(){
     fetch('http://localhost:5187/api/product', {
@@ -88,7 +107,11 @@ method2CallForDblClick(){
   deleteProduct(productId : any){
     this.openDeleteModal = true
     this.currentProduct = productId
+  }
 
+  deleteOrder(orderId : any){
+    this.openDeleteModal = true
+    this.currentProduct = orderId
   }
 
   addProduct(){

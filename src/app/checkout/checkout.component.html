@@ -36,8 +36,8 @@
     </div>
     <div class="col-md-8 order-md-1 form">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation">
-        <div class="row">
+      <form class="needs-validation" [formGroup]="checkoutForm">
+        <div class="row form-group">
           <div class="col-md-6 mb-3">
             <label>First Name</label>
             <input type="text" class="form-control" placeholder value required>
@@ -48,31 +48,42 @@
             <input type="text" class="form-control" placeholder value required>
             <div class="invalid-feedback">Valid first name is required.</div>
           </div>
-          <div class="mb-3">
-            <label for="">UserName</label>
+          <div class="mb-3 form-group">
+            <label for="">Username</label>
             <div class="input-group">
               <div class="input-group-prepend">
-                <span class="input-group-text">&map;</span>
               </div>
-              <input type="text" class="form-control" placeholder="Username" required="">
+              <input type="text" class="form-control" formControlName="userName" placeholder="Username" required="">
               <div class="invalid-feedback" style="width: 100%;">
                 Your username is required.
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 form-group">
               <label for="">Email</label>
               <div class="input-group">
                 <div class="input-group-prepend">
+                  <span class="input-group-text">&map;</span> 
                 </div>
-                <input type="email" class="form-control" placeholder="you@example.com" required="">
+                <input type="email" class="form-control" formControlName="email" placeholder="you@example.com" required="">
                 <div class="invalid-feedback" style="width: 100%;">
                   Your username is required.
                 </div>
               </div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 form-group">
+              <label for="">Phone</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                </div>
+                <input type="text" class="form-control" formControlName="phone" placeholder="Enter a valid phone number (10-12 digits)" required="">
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your username is required.
+                </div>
+              </div>
+            </div>  
+            <div class="mb-3 form-group">
               <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+              <input type="text" class="form-control" id="address" formControlName="address" placeholder="1234 Main St" required="">
               <div class="invalid-feedback">
                 Please enter your shipping address.
               </div>
@@ -110,7 +121,7 @@
                 </div>
               </div>
               <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <button class="btn btn-primary btn-lg btn-block" type="submit" (click)="checkoutInfo()">Continue to checkout</button>
             </div>
           </div>
         </div>

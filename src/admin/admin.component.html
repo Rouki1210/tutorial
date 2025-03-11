@@ -1,4 +1,5 @@
 <div class="container mt-3">
+  <h1>Product List</h1>
   <div class="button-container">
     <button class="primary-btn" (click)="addProduct()">Add a new product</button>
     <button class="secondary-btn">View as a customer</button>
@@ -29,7 +30,46 @@
       </tr>
     </tbody>
   </table>
+  
+  <h1>Order List</h1>
+  <div class="button-container">
+    <button class="primary-btn" (click)="addProduct()">Add a new order</button>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th class="table_item" (click)="sortProductIdAsc()" (dblclick)="sortProductIdDesc()">Order Id</th>
+        <th (click)="method1CallForClick()" (dblclick)="method2CallForDblClick()"> UserId</th>
+        <th>TotalPrice</th>
+        <th>Address</th>
+        <th>OrderItem</th> 
+        <th>DateOrder</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let order of orders">
+      <tr>
+        <td>{{order.orderId}}</td>
+        <td>{{order.userId}}</td>
+        <td>{{order.totalPrice}}</td>
+        <td>{{order.address}}</td>
+        <td></td>
+        <td>{{order.createdAt}}</td>
+        <td>
+          <i class="fa-regular fa-pen-to-square icon icon-edit" (click)="updateProduct(order)"></i>
+          <i class="fa-solid fa-trash icon icon-delete" (click)="deleteOrder(order.orderId)"></i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+  <!-- Modal -->
   <app-deleteProduct *ngIf="openDeleteModal" (onClose)="openDeleteModal = false" [product]="currentProduct"></app-deleteProduct>
   <app-editProduct *ngIf="openEditModal" (onClose)="openEditModal = false" [product]="editProduct"></app-editProduct>
   <app-addProduct *ngIf="openAddModal" (onClose)="closeAddModal()" ></app-addProduct>
+  <app-addOrder *ngIf="openAddOrderModal" (onClose)="openAddOrderModal = false"></app-addOrder>
+  <app-deleteOrder *ngIf="openDeleteModal" (onClose)="openDeleteModal = false" ></app-deleteOrder>
 </div>

@@ -1,0 +1,27 @@
+<app-modal [titleModal]="'Edit Order'" [open]="true" (onClose)="handleClose()">
+  <div body>
+    <form >
+      <div class="form-group">
+        <label for="product-id">Order ID</label>
+        <input type="text" id="product-id"  disabled>
+    </div>
+    <div class="form-group">
+        <label for="product-name">UserName</label>
+        <input type="text" id="product-name"  required>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" id="quantity" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" id="price"  required>
+    </div>
+    <div class="form-group">
+      <label for="product-image-url">Product Image URL</label>
+      <input type="text" id="product-image-url">
+    </div>
+    </form>
+  </div>
+
+</app-modal>
