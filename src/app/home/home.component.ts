@@ -132,16 +132,29 @@ export class HomeComponent implements OnInit{
     const endIndex = startIndex + this.limit;
   }
 
-  addtoCart(product : any){
+  addToCart(product: any) {
     if (!this.cartProduct) {
       this.cartProduct = JSON.parse(localStorage.getItem('cartProduct') || '[]');
     }
   
-    this.cartProduct.push(product);
-    localStorage.setItem('cartProduct', JSON.stringify(this.cartProduct))
+    // Check if the product already exists in the cart
+    const existingProduct = this.cartProduct.find((item: any) => item.id === product.id);
+  
+    if (existingProduct) {
+      // Increase the quantity instead of resetting it
+      existingProduct.quantity = (existingProduct.quantity || 1) + 1;
+    } else {  
+      // Add new product with quantity 1
+      this.cartProduct.push({ ...product, quantity: 1 });
+    }
+  
+    // Save updated cart to localStorage
+    localStorage.setItem('cartProduct', JSON.stringify(this.cartProduct));
+  
     console.log('Product added to cart:', product);
     console.log('Current cart:', this.cartProduct);
   }
+  
 
   // searchProduct(){
   //   if (this.searchText.trim() === '') {

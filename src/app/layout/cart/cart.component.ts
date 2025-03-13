@@ -12,7 +12,7 @@ import { CheckoutComponent } from '../../checkout/checkout.component';
 })
 export class CartComponent implements OnInit {
   @Output() onClose = new EventEmitter();
-  count = 1;
+
 
   cartProduct: any[] = []
 
@@ -44,14 +44,11 @@ export class CartComponent implements OnInit {
   }
 
   increaseProduct(productId : number){
-    this.count += 1;
+    console.log(this.cartProduct)
   }
 
   decreaseProduct(productId : number){
-    if(this.count <= 1){
-      return;
-    }
-    this.count -= 1;
+
   }
 
   deleteProduct(productId : number){

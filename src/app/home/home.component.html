@@ -23,7 +23,7 @@
                         <span class="float-end"><a href="#" class="small text-muted">Reviews</a></span>
                         <div *ngIf="product.quantity == 0" class="label-top shadow-sm">Sold out</div>
                     </div>
-                    <div class="text-center my-4"> <a class="btn btn-warning" (click)="addtoCart(product)" >Add to cart</a></div>
+                    <div class="text-center my-4"> <a class="btn btn-warning" (click)="addToCart(product)" >Add to cart</a></div>
                     </div>
                 </div>
                 <div class="card h-100 shadow-sm" *ngIf="product.quantity == 0">

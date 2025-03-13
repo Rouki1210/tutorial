@@ -16,10 +16,13 @@ export class CheckoutComponent implements OnInit {
   ngOnInit() {
     this.loadCart();
     this.loadCountry();
+    this.calculateTotal()
   }
 
   cartProduct : any[] = []
   country : any[] = []
+  totalPrice : number = 0
+
 
   checkoutForm : FormGroup = new FormGroup({
     userName: new FormControl('', Validators.required),
@@ -51,7 +54,26 @@ export class CheckoutComponent implements OnInit {
     }
   }
 
+  addOrder(){
+    const orderData = {
+      checkoutInfo: this.checkoutForm.value,
+      orderItems: this.cartProduct,
+    }
+    this.http.post<any>('https://localhost:7086/api/Order', orderData).subscribe(
+      (response) => {
+        console.log('Order successfully', response)
+      }, error => {
+        console.log(error)
+      }      
+    )
+  }
+
+  calculateTotal() {
+    this.totalPrice = this.cartProduct.reduce((total, product) => total + (product.price * product.quantity), 0);
+  }
+
   checkoutInfo(){
+    this.addOrder()
     console.log(this.checkoutForm.value, this.cartProduct)
   }
 }
