@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, ReactiveFormsModule, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { routes } from '../app.routes';
 
 @Component({
   selector: 'app-checkout',
@@ -11,7 +13,7 @@ import { FormGroup, ReactiveFormsModule, FormControl, Validators, FormBuilder } 
 })
 export class CheckoutComponent implements OnInit {
 
-  constructor(private http : HttpClient, fb : FormBuilder) { }
+  constructor(private http : HttpClient, fb : FormBuilder, private router : Router) { }
 
   ngOnInit() {
     this.loadCart();
@@ -62,6 +64,7 @@ export class CheckoutComponent implements OnInit {
     this.http.post<any>('https://localhost:7086/api/Order', orderData).subscribe(
       (response) => {
         console.log('Order successfully', response)
+        this.router.navigate(['/success']);
       }, error => {
         console.log(error)
       }      
